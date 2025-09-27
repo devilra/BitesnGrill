@@ -55,7 +55,10 @@ const Blog = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {blogs.map((blog, index) => (
-          <div key={blog.id || index} className="relative">
+          <div
+            key={blog.id || index}
+            className="relative bg-white shadow-lg hover:shadow-2xl transition-shadow duration-300 rounded-xl overflow-hidden"
+          >
             <RiDeleteBin3Line
               size={33}
               className="absolute top-2 p-2 rounded-full bg-white right-2 text-red-600 cursor-pointer z-10 hover:bg-red-800/35"
@@ -63,10 +66,7 @@ const Blog = () => {
               title="Delete Blog"
             />
 
-            <Link
-              to={`/dashboard/blog/${blog.id}`}
-              className="bg-white shadow-lg hover:shadow-2xl transition-shadow duration-300 rounded-xl overflow-hidden"
-            >
+            <Link to={`/dashboard/blog/${blog.id}`} className="">
               {/* Temporary Static Image */}
               <img
                 // src={
