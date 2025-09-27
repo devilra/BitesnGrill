@@ -22,6 +22,8 @@ const BlogEdit = () => {
 
   const { fetchBlogs } = useBlogs();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     const fetchBlog = async () => {
       try {
@@ -34,7 +36,7 @@ const BlogEdit = () => {
         // quillRef.current?.setContents(delta);
         setContent(delta);
         if (res.data.image) {
-          setPreview(`http://localhost:4000${res.data.image}`);
+          setPreview(`${API_URL}${res.data.image}`);
         }
 
         console.log(res.data);

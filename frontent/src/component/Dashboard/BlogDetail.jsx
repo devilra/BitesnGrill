@@ -9,6 +9,8 @@ const BlogDetail = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     const fetchBlog = async () => {
       try {
@@ -35,9 +37,7 @@ const BlogDetail = () => {
     return <p className="text-center text-red-500">Blog not found</p>;
   }
 
-  const imageUrl = blog.image
-    ? `http://localhost:4000${blog.image}`
-    : "/blogs/b2.jpg";
+  const imageUrl = blog.image ? `${API_URL}${blog.image}` : "/blogs/b2.jpg";
 
   return (
     <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6">
