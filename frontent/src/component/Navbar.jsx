@@ -4,15 +4,21 @@ import { motion } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link as ScrollLink } from "react-scroll";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const navigateLink = () => {
     navigate("/");
+  };
+
+  const handleLogout = () => {
+    logout();
   };
 
   const menuItems = [
@@ -23,17 +29,30 @@ const Navbar = () => {
     { name: "GALLERY", id: "gallery" },
     { name: "CONTACT", id: "contact", path: "/contact" },
     { name: "FRANCHISE ENQUIRY", id: "franchise", path: "/franchise" },
-  ];
+    !user
+      ? { name: "LOGIN", id: "login", path: "/login" }
+      : { name: "LOGOUT", id: "logout", logout: handleLogout },
+    user && { name: "DASHBOARD", id: "/dashboard", path: "/dashboard" },
+  ].filter(Boolean);
 
   const renderLink = (item) => {
-    if (item?.path) {
+    if (item.logout) {
+      return (
+        <button
+          onClick={item.logout}
+          className="duration-300 cursor-pointer group-hover:text-white"
+        >
+          {item.name}
+        </button>
+      );
+    } else if (item?.path) {
       const isActive = location.pathname === item.path;
 
       return (
         <RouterLink
           to={item.path}
           className={`duration-300 group-hover:text-white ${
-            isActive ? "text-white" : ""
+            isActive ? "md:text-white text-neutral-700  " : ""
           } `}
         >
           {item.name}
@@ -64,7 +83,7 @@ const Navbar = () => {
       style={{
         backgroundImage: 'url("/banner/b.jpg")',
       }}
-      className="h-[100px] sticky z-[1000] top-0 w-full pl-10 md:h-[120px] gap-5 flex  items-center bg-center bg-no-repeat bg-cover"
+      className="h-[100px] sticky z-[1000] top-0 w-full  md:h-[120px] gap-5 flex  items-center bg-center bg-no-repeat bg-cover"
     >
       {/* Logo Section */}
       <div className="flex items-center  md:pl-10 gap-2">
@@ -81,7 +100,7 @@ const Navbar = () => {
       </div>
 
       {/*  Desktop Menu   */}
-      <ul className="hidden md:hidden lg:flex items-center justify-center text-[15px] font-bold  gap-5">
+      <ul className="hidden md:hidden lg:flex items-center justify-center text-[14px] font-bold  gap-4">
         {menuItems.map((item, idx) => (
           <motion.li
             key={idx}
