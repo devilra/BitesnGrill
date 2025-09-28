@@ -5,6 +5,7 @@ const dotenv = require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
+const analyticRoute = require("./routes/analyticsRoutes");
 const path = require("path");
 
 const app = express();
@@ -22,6 +23,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/users", userRoutes);
 app.use("/api/blogs", blogRoutes);
+app.use("/api/analytic", analyticRoute);
 
 const PORT = process.env.PORT;
 

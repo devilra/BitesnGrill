@@ -56,6 +56,7 @@ exports.login = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      maxAge: 60 * 60 * 1000, // 1 hour = 3600000 ms
     });
 
     res.json({ message: "✅ Login success", user });
@@ -65,7 +66,11 @@ exports.login = async (req, res) => {
 };
 
 exports.logout = (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
   res.json({ message: "✅ Logged out" });
 };
 
