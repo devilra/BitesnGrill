@@ -7,11 +7,15 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
-  console.log(user);
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  // console.log(loading);
+  // console.log(user);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setMessage(null);
+    setIsSubmit(true);
     try {
       await login(email, password);
       setMessage({ type: "success", text: "Login Successful ✅" });
@@ -23,6 +27,8 @@ const Login = () => {
       setPassword("");
     } catch (err) {
       setMessage({ type: "error", text: "Something went wrong ❌" });
+    } finally {
+      setIsSubmit(false);
     }
   };
 
@@ -67,7 +73,7 @@ const Login = () => {
           type="submit"
           variant="contained"
           color="warning"
-          disabled={loading}
+          disabled={isSubmit}
           className={`w-full mt-4  ${
             loading && "opacity-40 cursor-not-allowed"
           } `}
