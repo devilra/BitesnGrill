@@ -12,7 +12,7 @@ const generateCaptcha = () => {
   return captcha;
 };
 
-const Contact = () => {
+const Contact = ({ title = "Contact Us", style = "md:my-48" }) => {
   const [captcha, setCaptcha] = useState(generateCaptcha());
   const [captchaInput, setCaptchaInput] = useState("");
   const [formData, setFormData] = useState({
@@ -52,10 +52,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex justify-center items-center my-10 md:my-36 h-[300px] bg-gray-50 px-4">
+    <div
+      className={`flex justify-center items-center my-10  ${style} h-[300px] bg-gray-50 px-4`}
+    >
       <div className="w-full max-w-7xl bg-white shadow-lg rounded-lg p-6 md:p-10">
-        <h1 className="text-2xl font-bold text-center mb-6">Contact Us</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <h1 className="text-2xl font-bold text-center mb-6">{title}</h1>
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="text"
@@ -63,7 +65,7 @@ const Contact = () => {
               placeholder="Your Name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300 outline-none"
+              className="w-full border  border-neutral-500/50 rounded px-3 py-3 focus:ring focus:ring-blue-300 outline-none"
               required
             />
             <input
@@ -72,7 +74,7 @@ const Contact = () => {
               placeholder="Your Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300 outline-none"
+              className="w-full border border-neutral-500/50 rounded px-3 py-3 focus:ring focus:ring-blue-300 outline-none"
               required
             />
             <input
@@ -81,7 +83,7 @@ const Contact = () => {
               placeholder="Subject"
               value={formData.subject}
               onChange={handleChange}
-              className="w-full border md:col-span-2 rounded px-3 py-2 focus:ring focus:ring-blue-300 outline-none"
+              className="w-full border border-neutral-500/50 md:col-span-2 rounded px-3 py-3 focus:ring focus:ring-blue-300 outline-none"
               required
             />
             {/* Phone */}
@@ -91,7 +93,7 @@ const Contact = () => {
               placeholder="Phone No"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full border md:col-span-2 rounded px-3 py-2 focus:ring focus:ring-blue-300 outline-none"
+              className="w-full border border-neutral-500/50 md:col-span-2 rounded px-3 py-3 focus:ring focus:ring-blue-300 outline-none"
             />
             {/* Message */}
             <textarea
@@ -100,7 +102,7 @@ const Contact = () => {
               rows="5"
               value={formData.message}
               onChange={handleChange}
-              className="w-full border md:col-span-2 rounded px-3 py-2 focus:ring focus:ring-blue-300 outline-none"
+              className="w-full border border-neutral-500/50 md:col-span-2 rounded px-3 py-3 focus:ring focus:ring-blue-300 outline-none"
               required
             ></textarea>
             {/* CAPTCHA */}
@@ -121,7 +123,7 @@ const Contact = () => {
             <input
               type="text"
               placeholder="Type CAPTCHA Here"
-              className="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300 outline-none"
+              className="w-full border border-neutral-500/50 rounded px-3 py-3 focus:ring focus:ring-blue-300 outline-none"
               value={captchaInput}
               onChange={(e) => setCaptchaInput(e.target.value)}
               required
@@ -132,7 +134,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmit}
-                className={`bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full text-lg font-semibold transition ${
+                className={`bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full text-lg font-semibold transition ${
                   isSubmit ? "opacity-40 cursor-not-allowed" : ""
                 }`}
               >

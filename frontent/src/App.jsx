@@ -4,7 +4,6 @@ import Home from "./component/Home/Home";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Footer from "./component/Footer";
 import Contact from "./component/Contact";
-import FranchiseEnquiry from "./component/FranchiseEnquiry";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
 import ProtectedRoute from "./component/ProtectedRoute";
@@ -15,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import BlogCreate from "./component/Dashboard/BlogCreate";
 import BlogEdit from "./component/Dashboard/BlogEdit";
 import BlogDetail from "./component/Dashboard/BlogDetail";
+import FranchiseForm from "./component/FranchiseForm";
 
 const App = () => {
   const location = useLocation();
@@ -27,7 +27,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/franchise" element={<FranchiseEnquiry />} />
+        <Route path="/franchise" element={<FranchiseForm />} />
 
         <Route path="/login" element={<Login />} />
         <Route element={<ProtectedRoute />}>
