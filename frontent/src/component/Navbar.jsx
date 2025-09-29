@@ -116,20 +116,27 @@ const Navbar = () => {
             />
           </motion.li>
         ))}
-        <li className="rounded-full">
+        <a
+          href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+          target="_blank"
+          className="rounded-full"
+        >
           <button className="bg-[#CE1212] border-2 border-black text-white font-bold px-4 py-2 rounded-full transition-all duration-300 hover:bg-black hover:border-[#CE1212]">
             Order Now
           </button>
-        </li>
+        </a>
       </ul>
 
       {/* Mobile Menu Button */}
       <div className="lg:hidden flex justify-end items-center gap-3">
-        <li>
+        <a
+          href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+          target="_blank"
+        >
           <button className="bg-[#CE1212] text-[7px] border-2 border-black text-white font-bold px-2 py-2 rounded-full transition-all duration-300 hover:bg-black hover:border-[#CE1212]">
             Order Now
           </button>
-        </li>
+        </a>
         {isOpen ? (
           <HiX
             onClick={() => setIsOpen(false)}

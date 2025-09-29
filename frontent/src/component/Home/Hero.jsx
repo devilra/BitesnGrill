@@ -92,20 +92,26 @@ const Hero = () => {
           Our <span className="text-[#CE1212]">Popular Deals</span>
         </h1>
         <div className=" flex gap-3 md:gap-7 mt-5 justify-center ">
-          <div>
+          <a
+            href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+            target="_blank"
+          >
             <img
               src="/deals/d1.jpg"
               alt="deals"
               className="h-[200px] md:h-[300px] w-[300px] md:w-full "
             />
-          </div>
-          <div>
+          </a>
+          <a
+            href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+            target="_blank"
+          >
             <img
               src="/deals/d2.jpg"
               alt="deals"
               className="h-[200px] md:h-[300px] w-[300px] md:w-full"
             />
-          </div>
+          </a>
         </div>
       </section>
       {/* section-------3 */}
@@ -120,20 +126,26 @@ const Hero = () => {
             Our <span className="text-[#CE1212]">Menu</span>
           </h1>
           <div className=" flex flex-col md:flex-row gap-3 md:gap-7 mt-5 justify-center ">
-            <div>
+            <a
+              href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+              target="_blank"
+            >
               <img
                 src="/menu/m1.jpg"
                 alt="deals"
                 className="h-[400px] md:h-[350px] w-full md:w-[550px] "
               />
-            </div>
-            <div>
+            </a>
+            <a
+              href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+              target="_blank"
+            >
               <img
                 src="/menu/m2.jpg"
                 alt="deals"
                 className="h-[400px] md:h-[350px] w-full md:w-[550px]"
               />
-            </div>
+            </a>
           </div>
         </div>
       </section>

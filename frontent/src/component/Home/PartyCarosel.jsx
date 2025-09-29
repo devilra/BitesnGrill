@@ -37,7 +37,11 @@ const PartyCarosel = () => {
     <div className="px-1">
       {" "}
       {/* Add horizontal padding for gap */}
-      <div className="relative">
+      <a
+        href="https://timesofindia.indiatimes.com/business/india-business/restaurants-in-a-soup-as-veggie-prices-soar/amp_articleshow/111702610.cms"
+        target="_blank"
+        className="relative"
+      >
         <img
           src={img.src}
           alt={img.name}
@@ -51,7 +55,7 @@ const PartyCarosel = () => {
             Read More
           </button>
         </div>
-      </div>
+      </a>
     </div>
   );
 

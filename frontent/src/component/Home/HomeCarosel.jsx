@@ -40,26 +40,34 @@ const HomeCarosel = () => {
       <div className="slide-container overflow-hidden hidden md:block">
         <Slider {...settings}>
           {images.map((img, index) => (
-            <div key={index}>
+            <a
+              href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+              target="_blank"
+              key={index}
+            >
               <img
                 src={img}
                 alt={`Slide ${index + 1}`}
                 className="w-full h-[500px]"
               />
-            </div>
+            </a>
           ))}
         </Slider>
       </div>
       <div className="slide-container overflow-hidden  md:hidden">
         <Slider {...settingsMobile}>
           {images.map((img, index) => (
-            <div key={index}>
+            <a
+              href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+              target="_blank"
+              key={index}
+            >
               <img
                 src={img}
                 alt={`Slide ${index + 1}`}
                 className="w-full h-[500px]"
               />
-            </div>
+            </a>
           ))}
         </Slider>
       </div>

@@ -6,7 +6,9 @@ const cookieParser = require("cookie-parser");
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const analyticRoute = require("./routes/analyticsRoutes");
+const contactRoute = require("./routes/contactRoutes");
 const path = require("path");
+const { request } = require("http");
 
 const app = express();
 
@@ -24,6 +26,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/users", userRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/analytics", analyticRoute);
+app.use("/api", contactRoute);
 
 const PORT = process.env.PORT;
 
