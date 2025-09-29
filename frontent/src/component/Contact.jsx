@@ -35,6 +35,7 @@ const Contact = ({ title = "Contact Us", style = "my-52" }) => {
     if (captchaInput !== captcha) {
       alert("❌ Invalid CAPTCHA. Please try again!");
       setCaptcha(generateCaptcha());
+      setIsSubmit(false);
       return;
     }
 
