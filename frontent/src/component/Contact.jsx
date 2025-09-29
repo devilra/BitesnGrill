@@ -45,7 +45,8 @@ const Contact = ({ title = "Contact Us", style = "my-52" }) => {
       setCaptcha(generateCaptcha());
       setCaptchaInput("");
     } catch (error) {
-      alert(error.message || "❌ Failed to send message!");
+      console.log(error);
+      alert(error || "❌ Failed to send message!");
     } finally {
       setIsSubmit(false);
     }
