@@ -12,7 +12,7 @@ const FranchiseForm = () => {
         />
       </div>
       <div>
-        <Contact title="Franchise Form" style="md:my-52" />
+        <Contact title="Franchise Form" style="my-52" />
       </div>
     </div>
   );

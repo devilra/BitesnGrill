@@ -12,7 +12,7 @@ const generateCaptcha = () => {
   return captcha;
 };
 
-const Contact = ({ title = "Contact Us", style = "md:my-48" }) => {
+const Contact = ({ title = "Contact Us", style = "my-52" }) => {
   const [captcha, setCaptcha] = useState(generateCaptcha());
   const [captchaInput, setCaptchaInput] = useState("");
   const [formData, setFormData] = useState({
@@ -53,7 +53,7 @@ const Contact = ({ title = "Contact Us", style = "md:my-48" }) => {
 
   return (
     <div
-      className={`flex justify-center items-center my-10  ${style} h-[300px] bg-gray-50 px-4`}
+      className={`flex justify-center items-center   ${style} h-[300px] bg-gray-50 px-4`}
     >
       <div className="w-full max-w-7xl bg-white shadow-lg rounded-lg p-6 md:p-10">
         <h1 className="text-2xl font-bold text-center mb-6">{title}</h1>
