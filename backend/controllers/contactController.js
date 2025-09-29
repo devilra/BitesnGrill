@@ -10,8 +10,10 @@ exports.contactForm = async (req, res) => {
       host: "smtp.gmail.com",
       port: 465, // SSL
       auth: {
-        user: process.env.ADMIN_EMAIL,
-        pass: process.env.ADMIN_PASS,
+        // user: process.env.ADMIN_EMAIL,
+        // pass: process.env.ADMIN_PASS,
+        user: "jkraja089@gmail.com",
+        pass: "abkpssvqrttyzvoq",
       },
     });
 
