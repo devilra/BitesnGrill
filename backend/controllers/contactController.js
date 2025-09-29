@@ -34,6 +34,6 @@ exports.contactForm = async (req, res) => {
     await transporter.sendMail(mailOptions);
     res.json({ success: true, message: "Message sent successfully!" });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to send message" });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
