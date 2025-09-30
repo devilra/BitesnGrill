@@ -516,14 +516,14 @@ const Hero = () => {
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.4769199087004!2d72.83800047444353!3d19.0427577530168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c92e17100001%3A0x8ba96c0925b39f32!2sSt.%20Michael&#39;s%20Church%2C%20Mahim!5e0!3m2!1sen!2sin!4v1758801351182!5m2!1sen!2sin"
             className="w-full md:w-1/2 h-72 border-0 rounded shadow"
-            allowfullscreen=""
+            allowFullScreen=""
             loading="lazy"
           ></iframe>
 
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7541.945576469112!2d72.881287!3d19.064934!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9bf40c4ed19%3A0xa25d3b05259a616c!2sBites&#39;%20n%20Grill!5e0!3m2!1sen!2sin!4v1758801464198!5m2!1sen!2sin"
             className="w-full md:w-1/2 h-72 border-0 rounded shadow"
-            allowfullscreen=""
+            allowFullScreen=""
             loading="lazy"
           ></iframe>
         </div>

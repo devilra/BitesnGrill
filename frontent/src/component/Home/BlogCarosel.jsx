@@ -10,6 +10,10 @@ const BlogCarosel = () => {
   const { blogs, loading, fetchBlogs } = useBlogs();
   const [selectedBlog, setSelectedBlog] = useState(null);
 
+  //console.log(blogs);
+
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     if (blogs.length === 0) fetchBlogs();
   }, []);
@@ -43,9 +47,7 @@ const BlogCarosel = () => {
   };
 
   const renderSlide = (blog) => {
-    const imageUrl = blog.image
-      ? `http://localhost:4000${blog.image}`
-      : "/blogs/b2.jpg";
+    const imageUrl = blog.image ? `${API_URL}${blog.image}` : "/blogs/b2.jpg";
     return (
       <div
         key={blog.id}
