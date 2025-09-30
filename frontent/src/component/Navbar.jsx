@@ -83,10 +83,10 @@ const Navbar = () => {
       style={{
         backgroundImage: 'url("/banner/b.jpg")',
       }}
-      className="h-[100px] sticky z-[1000] top-0 w-full  md:h-[120px] gap-5 flex  items-center bg-center bg-no-repeat bg-cover"
+      className="h-[100px] sticky z-[1000] top-0 w-full px-4  md:h-[120px] gap-5 flex justify-between  items-center bg-center bg-no-repeat bg-cover"
     >
       {/* Logo Section */}
-      <div className="flex items-center  md:pl-10 gap-2">
+      <div className="flex items-center gap-2">
         <img
           src="/banner/logo.png"
           alt="logo"

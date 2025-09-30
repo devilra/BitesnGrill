@@ -11,6 +11,7 @@ import GroupBook from "./GroupBook";
 import { FiMail } from "react-icons/fi";
 import { IoCallOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 
 const Hero = () => {
   const images = ["/banner/b2.jpg", "/banner/b4.jpg", "/banner/b5.jpg"];
@@ -50,31 +51,54 @@ const Hero = () => {
 
   return (
     <div className="mb-20">
-      <div className="w-full h-[25vh]  md:h-[83vh] flex items-center md:items-end justify-center md:justify-start relative overflow-hidden">
+      <div className="w-full h-[35vh]  md:h-[83vh] flex items-center md:items-end justify-center md:justify-start relative overflow-hidden">
         {/* Background fade change */}
         <AnimatePresence mode="wait">
           <motion.div
             key={index} // React-ku ithu replace panna solluthu
-            className="absolute inset-0 bg-contain md:bg-cover bg-no-repeat "
+            className="absolute inset-0 bg-contain h-[700px] md:bg-cover bg-no-repeat "
             style={{ backgroundImage: `url(${images[index]}?v=${index})` }}
           />
         </AnimatePresence>
 
         <div className="md:hidden absolute top-[5px]  right-[4px]">
-          <ul className="flex flex-col space-y-[1px] items-center justify-center w-[100px]">
-            <li className="text-center px-2 bg-black/25 text-[10px] py-1  text-white flex flex-col items-center">
+          <div className="flex flex-col space-y-[1px] items-center justify-center w-[100px]">
+            <Link
+              to="/franchise"
+              className="text-center px-2 bg-black/25 text-[10px] py-1  text-white flex flex-col items-center"
+            >
               <img src="/banner/m1.png" className="h-7 " /> FRANCHISEE ENQUIRY
-            </li>
-            <li className="text-center px-7 bg-black/25 text-[10px] py-1  text-white flex flex-col items-center">
+            </Link>
+            <ScrollLink
+              to="about"
+              smooth={true}
+              duration={600}
+              offset={-100}
+              className="text-center px-7 bg-black/25 text-[10px] py-1 text-white flex flex-col items-center cursor-pointer"
+            >
               <img src="/banner/m2.png" className="h-7 " /> ABOUT US
-            </li>
-            <li className="text-center px-7 bg-black/25 text-[10px] py-1  text-white flex flex-col items-center">
+            </ScrollLink>
+
+            <ScrollLink
+              to="gallery"
+              smooth={true}
+              duration={600}
+              offset={-100}
+              className="text-center px-7 bg-black/25 text-[10px] py-1 text-white flex flex-col items-center cursor-pointer"
+            >
               <img src="/banner/m3.png" className="h-7 " /> GALLERY
-            </li>
-            <li className="text-center px-6 bg-black/25 text-[10px] py-1  text-white flex flex-col items-center">
+            </ScrollLink>
+
+            <ScrollLink
+              to="party"
+              smooth={true}
+              duration={600}
+              offset={-100}
+              className="text-center px-6 bg-black/25 text-[10px] py-1 text-white flex flex-col items-center cursor-pointer"
+            >
               <img src="/banner/m4.png" className="h-7 " /> PARTY BOOKING
-            </li>
-          </ul>
+            </ScrollLink>
+          </div>
         </div>
 
         {/* Button on top */}
