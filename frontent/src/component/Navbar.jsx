@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link as ScrollLink } from "react-scroll";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
@@ -51,6 +51,7 @@ const Navbar = () => {
       return (
         <RouterLink
           to={item.path}
+          onClick={() => setIsOpen(false)}
           className={`duration-300 group-hover:text-white ${
             isActive ? "md:text-white text-neutral-700  " : ""
           } `}
@@ -66,7 +67,10 @@ const Navbar = () => {
           duration={600}
           spy={true}
           offset={-120}
-          onClick={() => navigateLink()}
+          onClick={() => {
+            navigateLink();
+            setIsOpen(false);
+          }}
           activeClass="text-white"
           className={`duration-300 group-hover:text-white ${
             location.pathname !== "/" ? "text-black" : ""
@@ -151,35 +155,37 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Slide Menu */}
-      {isOpen && (
-        <motion.div
-          initial={{ x: "100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "100%" }}
-          transition={{ duration: 0.4 }}
-          className="fixed top-0 right-0 w-[85%] sm:w-[50%] h-full bg-white text-black flex flex-col items-start p-8 z-50"
-        >
-          <button
-            onClick={() => setIsOpen(false)}
-            className="self-end text-3xl mb-6"
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="fixed top-0 right-0 w-[85%] sm:w-[50%] h-full bg-white text-black flex flex-col items-start p-8 z-50"
           >
-            <HiX />
-          </button>
-          <ul className="flex flex-col gap-6 text-lg font-semibold">
-            {menuItems.map((item, idx) => (
-              <motion.li key={idx} className="relative cursor-pointer group">
-                {renderLink(item)}
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="absolute left-0 -bottom-1 h-[2px] bg-[#CE1212] origin-left"
-                />
-              </motion.li>
-            ))}
-          </ul>
-        </motion.div>
-      )}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="self-end text-3xl mb-6"
+            >
+              <HiX />
+            </button>
+            <ul className="flex flex-col gap-6 text-lg font-semibold">
+              {menuItems.map((item, idx) => (
+                <motion.li key={idx} className="relative cursor-pointer group">
+                  {renderLink(item)}
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="absolute left-0 -bottom-1 h-[2px] bg-[#CE1212] origin-left"
+                  />
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

@@ -58,7 +58,10 @@ const Hero = () => {
 
   return (
     <div className="mb-20">
-      <div className="w-full h-[30vh] sm:h-[60vh] md:h-[83vh] flex items-center md:items-end justify-center md:justify-start relative overflow-hidden ">
+      <div
+        id="home"
+        className="w-full h-[30vh] sm:h-[60vh] md:h-[83vh] flex items-center md:items-end justify-center md:justify-start relative overflow-hidden "
+      >
         {/* Background fade change */}
         <AnimatePresence mode="wait">
           <motion.div
