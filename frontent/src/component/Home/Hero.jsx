@@ -10,6 +10,7 @@ import RatingCarosel from "./RatingCarosel";
 import GroupBook from "./GroupBook";
 import { FiMail } from "react-icons/fi";
 import { IoCallOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const images = ["/banner/b2.jpg", "/banner/b4.jpg", "/banner/b5.jpg"];
@@ -511,7 +512,11 @@ const Hero = () => {
         {/* Address & Contact Boxes */}
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
           {/* Mahim */}
-          <div className="border border-yellow-400 flex flex-col justify-center items-center p-6 rounded  shadow-2xl transition">
+          <a
+            href="https://maps.app.goo.gl/wTqoCFn5ow8wo3ys5"
+            target="_blank"
+            className="border border-yellow-400 flex flex-col justify-center items-center p-6 rounded  shadow-2xl transition"
+          >
             <h3 className="text-3xl font-bold mb-3 text-center">Mahim</h3>
             <img
               src="/address/a1.png"
@@ -522,11 +527,15 @@ const Hero = () => {
               <span className="font-bold">Shop No: 4</span>, Karam Bhoomi Bldg,
               Mori Rd, Nr Mahim Bus Depot, Mahim West-400016
             </p>
-          </div>
+          </a>
 
           {/* Kurla */}
-          <div className="border border-yellow-400 flex flex-col justify-center items-center p-6 rounded  shadow-2xl transition">
-            <h3 className="text-3xl font-bold mb-3 text-center">Mahim</h3>
+          <a
+            href="https://maps.app.goo.gl/Qe7dRBsyCmUoaEcR7"
+            target="_blank"
+            className="border border-yellow-400 flex flex-col justify-center items-center p-6 rounded  shadow-2xl transition"
+          >
+            <h3 className="text-3xl font-bold mb-3 text-center">Kurla</h3>
             <img
               src="/address/a1.png"
               alt="location"
@@ -537,25 +546,29 @@ const Hero = () => {
               Point Mall, SG Barve Marg, opposite Kurla West Station Road,
               Jagruti Nagar, East, Kurla, Mumbai, Maharashtra 400024
             </p>
-          </div>
+          </a>
 
           {/* Email */}
-          <div className="border border-yellow-400 flex flex-col justify-center items-center p-6 rounded shadow-2xl transition">
+          <a
+            href="mailto:bitesngrill@gmail.com"
+            target="_blank"
+            className="border border-yellow-400 flex flex-col justify-center items-center p-6 rounded shadow-2xl transition cursor-pointer"
+          >
             <h3 className="text-3xl font-bold mb-3 text-center">Email Us</h3>
             <FiMail size={120} className="py-5" />
-
             <p className="font-bold">bitesngrill@gmail.com</p>
-          </div>
+          </a>
 
           {/* Call */}
-          <div className="border border-yellow-400 flex flex-col justify-center items-center p-6 rounded shadow-2xl transition">
+          <div
+            onClick={() => (window.location.href = "tel:+919504902902")}
+            className="border border-yellow-400 flex flex-col justify-center items-center p-6 rounded shadow-2xl transition cursor-pointer"
+          >
             <h3 className="text-3xl font-bold mb-3 text-center">Call Us</h3>
             <IoCallOutline size={120} className="py-5" />
-            <p>
-              Mahim:{" "}
-              <a className="text-[#CE1212]" href="tel:+919504902902">
-                +91 95049 02902
-              </a>{" "}
+
+            <p className="text-center">
+              Mahim: <span className="text-[#CE1212]">+91 95049 02902</span>
               <br />
               Kurla:{" "}
               <a className="text-[#CE1212]" href="tel:+919987859229">
@@ -567,9 +580,12 @@ const Hero = () => {
 
         {/* Bottom button */}
         <div className="flex justify-center mt-10">
-          <button className="bg-[#CE1212] text-white px-6 py-3 rounded-full shadow hover:text-black  cursor-pointer transition">
+          <Link
+            to="/contact"
+            className="bg-[#CE1212] text-white px-6 py-3 rounded-full shadow hover:text-black  cursor-pointer transition"
+          >
             Contact Us
-          </button>
+          </Link>
         </div>
       </section>
     </div>

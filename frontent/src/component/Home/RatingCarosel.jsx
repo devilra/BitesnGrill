@@ -8,6 +8,7 @@ import {
   FaQuoteLeft,
   FaQuoteRight,
 } from "react-icons/fa";
+import AwardRibbon from "../AwardRibbon";
 
 // Review slider settings
 const reviewSettings = {
@@ -169,7 +170,7 @@ const RatingCarosel = () => {
       </div>
 
       <div className="w-[100px] h-[100px] flex justify-center items-center max-w-md mx-auto bg-gray-300">
-        <h1>logo</h1>
+        <AwardRibbon />
       </div>
 
       {/* <Slider {...reviewSettings}>
