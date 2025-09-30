@@ -119,7 +119,7 @@ const BlogCarosel = () => {
               <img
                 src={
                   selectedBlog.image
-                    ? `http://localhost:4000${selectedBlog.image}`
+                    ? `${API_URL}${selectedBlog.image}`
                     : "/blogs/b2.jpg"
                 }
                 alt={selectedBlog.title}
