@@ -49,14 +49,21 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollFade = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.2 }, // once:true → scroll panna first time maathiri animate
+    transition: { duration: 1 },
+  };
+
   return (
     <div className="mb-20">
-      <div className="w-full h-[35vh]  md:h-[83vh] flex items-center md:items-end justify-center md:justify-start relative overflow-hidden">
+      <div className="w-full h-[30vh] sm:h-[60vh] md:h-[83vh] flex items-center md:items-end justify-center md:justify-start relative overflow-hidden ">
         {/* Background fade change */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={index} // React-ku ithu replace panna solluthu
-            className="absolute inset-0 bg-contain h-[700px] md:bg-cover bg-no-repeat "
+            key={index}
+            className="absolute top-0 left-0 right-0 bottom-0 bg-cover  bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${images[index]}?v=${index})` }}
           />
         </AnimatePresence>
@@ -65,7 +72,7 @@ const Hero = () => {
           <div className="flex flex-col space-y-[1px] items-center justify-center w-[100px]">
             <Link
               to="/franchise"
-              className="text-center px-2 bg-black/25 text-[10px] py-1  text-white flex flex-col items-center"
+              className="text-center px-2 bg-black/50 text-[10px] py-1  text-white flex flex-col items-center"
             >
               <img src="/banner/m1.png" className="h-7 " /> FRANCHISEE ENQUIRY
             </Link>
@@ -74,7 +81,7 @@ const Hero = () => {
               smooth={true}
               duration={600}
               offset={-100}
-              className="text-center px-7 bg-black/25 text-[10px] py-1 text-white flex flex-col items-center cursor-pointer"
+              className="text-center px-7 bg-black/50 text-[10px] py-1 text-white flex flex-col items-center cursor-pointer"
             >
               <img src="/banner/m2.png" className="h-7 " /> ABOUT US
             </ScrollLink>
@@ -84,7 +91,7 @@ const Hero = () => {
               smooth={true}
               duration={600}
               offset={-100}
-              className="text-center px-7 bg-black/25 text-[10px] py-1 text-white flex flex-col items-center cursor-pointer"
+              className="text-center px-[30px] bg-black/50 text-[10px] py-1 text-white flex flex-col items-center cursor-pointer"
             >
               <img src="/banner/m3.png" className="h-7 " /> GALLERY
             </ScrollLink>
@@ -94,7 +101,7 @@ const Hero = () => {
               smooth={true}
               duration={600}
               offset={-100}
-              className="text-center px-6 bg-black/25 text-[10px] py-1 text-white flex flex-col items-center cursor-pointer"
+              className="text-center px-6 bg-black/50 text-[10px] py-1 text-white flex flex-col items-center cursor-pointer"
             >
               <img src="/banner/m4.png" className="h-7 " /> PARTY BOOKING
             </ScrollLink>
@@ -102,21 +109,22 @@ const Hero = () => {
         </div>
 
         {/* Button on top */}
-        <div className="relative md:ml-36 md:mb-20">
-          <button
+        <div className="relative md:ml-36 pt-32  md:mb-20">
+          <a
+            href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
             style={{ fontSize: "20px" }}
-            className="bg-[#CE1212]  text-center mt-5 px-10 py-4 text-2xl md:text-[20px] border-3 border-black rounded-2xl shadow-md text-white font-bold hover:bg-black transition"
+            className="bg-[#CE1212]  text-center mt-5 px-5 md:px-10 md:py-4 py-2 text-2xl md:text-[20px] border-3 border-black rounded-full shadow-md text-white font-bold  transition"
           >
             Order Now
-          </button>
+          </a>
         </div>
       </div>
       {/* section----2 */}
-      <section className="px-2 ">
+      <motion.section {...scrollFade} className="md:px-2 pr-5 ">
         <h1 className="text-center text-3xl md:text-5xl font-semibold py-7">
           Our <span className="text-[#CE1212]">Popular Deals</span>
         </h1>
-        <div className=" flex gap-3 md:gap-7 mt-5 justify-center ">
+        <div className=" flex  md:gap-7 mt-5 justify-center ">
           <a
             href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
             target="_blank"
@@ -124,7 +132,7 @@ const Hero = () => {
             <img
               src="/deals/d1.jpg"
               alt="deals"
-              className="h-[200px] md:h-[300px] w-[300px] md:w-full "
+              className="h-[280px] md:h-[300px] w-[320px] md:w-full "
             />
           </a>
           <a
@@ -134,23 +142,27 @@ const Hero = () => {
             <img
               src="/deals/d2.jpg"
               alt="deals"
-              className="h-[200px] md:h-[300px] w-[300px] md:w-full"
+              className="h-[280px] md:h-[300px] w-[320px] md:w-full"
             />
           </a>
         </div>
-      </section>
+      </motion.section>
       {/* section-------3 */}
-      <section>
+      <motion.section {...scrollFade}>
         <h1 className="text-3xl md:text-5xl font-semibold text-center py-5">
           Our <span className="text-[#CE1212]">Store</span>
         </h1>
         <HomeCarosel />
 
-        <div id="menu" className="bg-gray-200 mt-10 pb-10">
+        <motion.div
+          {...scrollFade}
+          id="menu"
+          className="bg-gray-200 mt-10 pb-10"
+        >
           <h1 className="text-3xl md:text-5xl font-semibold text-center py-5">
             Our <span className="text-[#CE1212]">Menu</span>
           </h1>
-          <div className=" flex flex-col md:flex-row gap-3 md:gap-7 mt-5 justify-center ">
+          <div className=" flex flex-col md:flex-row gap-7 md:gap-7 mt-5 justify-center ">
             <a
               href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
               target="_blank"
@@ -172,50 +184,53 @@ const Hero = () => {
               />
             </a>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
       {/* section-----------4 */}
-      <div className="md:px-8" id="about">
+      <motion.div {...scrollFade} className="md:px-8" id="about">
         <h2 className=" text-[#CE1212] text-3xl md:text-5xl font-semibold text-center py-5">
           About Us
         </h2>
-        <section className="px-6 grid md:-mt-10 md:grid-cols-2 gap-8 items-center">
+        <section className=" grid md:-mt-10 md:grid-cols-2 gap-8 items-center">
           {/* Left side - Media Preview */}
 
-          <div className="pt-16">
-            <p className="md:text-lg  mb-3">
-              Welcome to Bites n Grill, a culinary hotspot nestled in the heart
-              of Mumbai. We are more than just a pizza and burger joint; we are
-              a haven for food lovers who crave for a variety of delicious
-              dishes.
-            </p>
-            <p className="md:text-lg mb-3">
-              Bites n Grill is a bustling hub of flavors and aromas. Our menu
-              boasts a wide range of mouth-watering dishes, including the
-              freshest and most delicious Burgers, Pizzas, Pastas, Tacos,
-              Frankies, Sandwiches, and much more.
-            </p>
-            <p className="md:text-lg mb-3">
-              Our pizzas, baked to perfection with a blend of fresh ingredients,
-              authentic Italian flavours and an Indian touch to it. Our burgers,
-              made with the juiciest inhouse patties and freshest veggies, are
-              sure to tantalize your taste buds. But that's not all! We also
-              offer a variety of pastas, tacos, frankies, and sandwiches, each
-              dish crafted with love and served with a side of warmth.
-            </p>
+          <div className="pt-5  md:pt-16">
+            <div className="px-4 md:px-6">
+              <p className="md:text-lg text-[17px] mb-3">
+                Welcome to Bites n Grill, a culinary hotspot nestled in the
+                heart of Mumbai. We are more than just a pizza and burger joint;
+                we are a haven for food lovers who crave for a variety of
+                delicious dishes.
+              </p>
+              <p className="md:text-lg mb-3">
+                Bites n Grill is a bustling hub of flavors and aromas. Our menu
+                boasts a wide range of mouth-watering dishes, including the
+                freshest and most delicious Burgers, Pizzas, Pastas, Tacos,
+                Frankies, Sandwiches, and much more.
+              </p>
+              <p className="md:text-lg mb-3">
+                Our pizzas, baked to perfection with a blend of fresh
+                ingredients, authentic Italian flavours and an Indian touch to
+                it. Our burgers, made with the juiciest inhouse patties and
+                freshest veggies, are sure to tantalize your taste buds. But
+                that's not all! We also offer a variety of pastas, tacos,
+                frankies, and sandwiches, each dish crafted with love and served
+                with a side of warmth.
+              </p>
 
-            <p className="md:text-lg mb-3">
-              We are open 7 days a week, ready to serve you a feast of flavours
-              at any time of the day.
-            </p>
-            <p className="md:text-lg mb-3">
-              So, whether you're looking for a quick bite on a busy day or a
-              relaxed meal - Bites n Grill is the place to be.
-            </p>
-            <p className="md:text-lg mb-3">
-              Come, join us at Bites n Grill, and embark on a gastronomic
-              journey that you'll remember
-            </p>
+              <p className="md:text-lg mb-3">
+                We are open 7 days a week, ready to serve you a feast of
+                flavours at any time of the day.
+              </p>
+              <p className="md:text-lg mb-3">
+                So, whether you're looking for a quick bite on a busy day or a
+                relaxed meal - Bites n Grill is the place to be.
+              </p>
+              <p className="md:text-lg mb-3">
+                Come, join us at Bites n Grill, and embark on a gastronomic
+                journey that you'll remember
+              </p>
+            </div>
 
             {/* Preview (first video or image) */}
             <div
@@ -223,12 +238,14 @@ const Hero = () => {
               onClick={() => setIsOpen(true)}
             >
               {isVideo ? (
-                <ReactPlayer
-                  url={currentItem}
-                  width="100%"
-                  height="250px"
-                  light={true} // always show thumbnail
-                />
+                <div className="">
+                  <ReactPlayer
+                    url={currentItem}
+                    width="100%"
+                    height="250px"
+                    light={true} // always show thumbnail
+                  />
+                </div>
               ) : (
                 <img
                   src={currentItem}
@@ -302,11 +319,11 @@ const Hero = () => {
             />
           </div>
         </section>
-      </div>
+      </motion.div>
 
       {/* section--------------5 */}
 
-      <section id="party">
+      <motion.section {...scrollFade} id="party">
         <div className="mt-10 px-4 md:px-8">
           <h1 className="text-center text-3xl md:text-5xl pb-5 md:pb-12 ">
             Why <span className="text-[#CE1212]">Choose Bites' n Grill</span>
@@ -345,22 +362,26 @@ const Hero = () => {
             Call Us
           </button>
         </div>
-      </section>
+      </motion.section>
 
       {/* section----------------6 */}
 
-      <section className="mt-10">
+      <motion.section {...scrollFade} className="mt-10">
         <h1 className="text-center text-3xl md:text-5xl font-semibold text-[#CE1212]">
           Blogs
         </h1>
         <div className="mt-10">
           <BlogCarosel />
         </div>
-      </section>
+      </motion.section>
 
       {/* section-----------------7 */}
 
-      <section id="gallery" className="mt-10 bg-gray-200 py-5 md:py-10">
+      <motion.section
+        {...scrollFade}
+        id="gallery"
+        className="mt-10 bg-gray-200 py-5 md:py-10"
+      >
         <h1 className="text-center text-3xl md:text-5xl font-semibold ">
           Check <span className="text-[#CE1212]">Our Gallery</span>
         </h1>
@@ -370,11 +391,11 @@ const Hero = () => {
         <div className="pt-5">
           <RatingCarosel />
         </div>
-      </section>
+      </motion.section>
 
       {/* section------------------8 */}
 
-      <section>
+      <motion.section {...scrollFade}>
         <div>
           <h1 className="text-center text-3xl md:text-5xl pt-5">
             Group<span className="text-[#CE1212]">Booking</span>
@@ -388,12 +409,12 @@ const Hero = () => {
             </button>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* section-------------------9 */}
 
-      <section className="mt-10">
-        <div className="bg-gray-200 pb-20 group transform transition-transform duration-500 group-hover:scale-110 ">
+      <motion.section {...scrollFade} className="mt-10">
+        <div className="bg-gray-200 md:pb-20 pb-10 group transform transition-transform duration-500 group-hover:scale-110 ">
           <h1 className="text-center text-3xl md:text-5xl py-7">
             Franchise <span className="text-[#CE1212]">Enquiry</span>
           </h1>
@@ -466,19 +487,19 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center pt-10">
-            <button className="bg-[#CE1212] cursor-pointer hover:text-black text-white px-10 py-3 font-semibold rounded-full">
+          <div className="flex   justify-center pt-20">
+            <button className="bg-[#CE1212] cursor-pointer  text-white px-10 py-3 font-semibold rounded-full">
               Franchise Booking
             </button>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* section----------------------------------10 */}
 
-      <section className="mt-10 max-w-6xl mx-auto">
+      <motion.section {...scrollFade} className="mt-12 max-w-6xl mx-auto">
         <div>
-          <h1 className="text-center text-3xl md:text-5xl pb-5 md:pb-12 ">
+          <h1 className="text-center text-3xl md:text-5xl pb-10 md:pb-12 ">
             Table <span className="text-[#CE1212]">Booking</span>
           </h1>
           <div className="bg-gray-200 flex flex-col md:gap-10 lg:gap-20 md:flex-row lg:flex-row ">
@@ -495,24 +516,24 @@ const Hero = () => {
                 alt="booking"
                 className="h-[400px] md:h-[400px] lg:h-[420px]"
               />
-              <div className="flex justify-center items-end mt-3 pt-10">
-                <button className="bg-[#CE1212] cursor-pointer hover:text-black text-white px-10 py-3 font-semibold rounded-full">
+              <div className="flex justify-center items-end mt-3 pb-10 md:pb-0 pt-10">
+                <button className="bg-[#CE1212] cursor-pointer  text-white px-10 py-3 font-semibold rounded-full">
                   Book a Table
                 </button>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="py-10">
+      <motion.section {...scrollFade} className="py-10">
         {/* Heading */}
         <h2 className="text-center text-3xl md:text-5xl  mb-10">
           Need Help? <span className="text-[#CE1212]">Contact Us</span>
         </h2>
 
         {/* Google Maps */}
-        <div className="flex flex-col md:flex-row gap-6 justify-center mb-14 px-4">
+        <div className="flex flex-col md:flex-row gap-6 justify-center mb-14 md:px-4">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.4769199087004!2d72.83800047444353!3d19.0427577530168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c92e17100001%3A0x8ba96c0925b39f32!2sSt.%20Michael&#39;s%20Church%2C%20Mahim!5e0!3m2!1sen!2sin!4v1758801351182!5m2!1sen!2sin"
             className="w-full md:w-1/2 h-72 border-0 rounded shadow"
@@ -534,7 +555,10 @@ const Hero = () => {
         </h2>
 
         {/* Address & Contact Boxes */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+        <motion.div
+          {...scrollFade}
+          className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:px-4"
+        >
           {/* Mahim */}
           <a
             href="https://maps.app.goo.gl/wTqoCFn5ow8wo3ys5"
@@ -600,18 +624,18 @@ const Hero = () => {
               </a>
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom button */}
         <div className="flex justify-center mt-10">
           <Link
             to="/contact"
-            className="bg-[#CE1212] text-white px-6 py-3 rounded-full shadow hover:text-black  cursor-pointer transition"
+            className="bg-[#CE1212] text-white px-6 py-3 rounded-full shadow   cursor-pointer transition"
           >
             Contact Us
           </Link>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };

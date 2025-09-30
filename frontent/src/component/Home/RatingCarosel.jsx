@@ -169,7 +169,7 @@ const RatingCarosel = () => {
         </div>
       </div>
 
-      <div className="w-[100px] h-[100px] flex justify-center items-center max-w-md mx-auto bg-gray-300">
+      <div className="w-[100px] h-[100px] my-5 flex justify-center items-center max-w-md mx-auto bg-gray-300">
         <AwardRibbon />
       </div>
 
