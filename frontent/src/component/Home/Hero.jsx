@@ -114,7 +114,7 @@ const Hero = () => {
         {/* Button on top */}
         <div className="relative md:ml-36 pt-32  md:mb-20">
           <a
-            href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+            href="https://www.swiggy.com/city/mumbai/bites-n-grill-mahim-rest349432"
             style={{ fontSize: "20px" }}
             className="bg-[#CE1212]  text-center mt-5 px-5 md:px-10 md:py-4 py-2 text-2xl md:text-[20px] border-3 border-black rounded-full shadow-md text-white font-bold  transition"
           >

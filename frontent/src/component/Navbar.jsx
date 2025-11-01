@@ -121,7 +121,7 @@ const Navbar = () => {
           </motion.li>
         ))}
         <a
-          href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+          href="https://link.zomato.com/xqzv/rshare?id=5464607730563e05"
           target="_blank"
           className="rounded-full"
         >
@@ -134,7 +134,7 @@ const Navbar = () => {
       {/* Mobile Menu Button */}
       <div className="lg:hidden flex justify-end items-center gap-3">
         <a
-          href="https://thrivenow.in/bites-n-grill/browse-menu/delivery"
+          href="https://link.zomato.com/xqzv/rshare?id=5464607730563e05"
           target="_blank"
         >
           <button className="bg-[#CE1212] text-[7px] border-2 border-black text-white font-bold px-2 py-2 rounded-full transition-all duration-300 hover:bg-black hover:border-[#CE1212]">

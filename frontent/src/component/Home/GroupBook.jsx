@@ -50,7 +50,7 @@ const GroupBook = () => {
           <img
             src="/book/b1.jpg"
             alt="b1"
-            className="lg:h-[600px] lg:w-[500px] object-cover object-left"
+            className="lg:h-[600px] lg:w-[650px]   object-cover object-left"
           />
           <div className="absolute bottom-4 space-y-4">
             <h1 className="text-white font-bold text-3xl">Birthday Parties</h1>
