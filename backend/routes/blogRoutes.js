@@ -10,7 +10,7 @@ const {
   getAllBlogs,
   getBlogById,
 } = require("../controllers/blogController");
-const upload = require("../middleware/upload");
+const Cloudinaryupload = require("../middleware/cloudinaryMulter");
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.post(
   "/add",
   authMiddleware,
   adminMiddleware,
-  upload.single("image"),
+  Cloudinaryupload.single("image"),
   addBlog
 );
 
@@ -29,7 +29,7 @@ router.put(
   "/edit/:id",
   authMiddleware,
   adminMiddleware,
-  upload.single("image"),
+  Cloudinaryupload.single("image"),
   editBlog
 );
 router.delete("/delete/:id", authMiddleware, adminMiddleware, deleteBlog);

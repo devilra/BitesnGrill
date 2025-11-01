@@ -10,7 +10,7 @@ import { RiDeleteBin3Line } from "react-icons/ri";
 const Blog = () => {
   const { blogs, loading, error, fetchBlogs, deleteBlog } = useBlogs();
 
-  //console.log(blogs);
+  console.log(blogs);
 
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -74,9 +74,9 @@ const Blog = () => {
                 //     ? `http://localhost:4000/uploads/${blog.image}`
                 //     : ` https://picsum.photos/400/250`
                 // }
-                src={blog.image ? `${API_URL}${blog.image}` : "/blogs/b2.jpg"}
+                src={blog.image ? blog.image : "/blogs/b2.jpg"}
                 alt={blog.title || "Blog thumbnail"}
-                className="w-full h-48 object-cover"
+                className="w-full h-48 object-contain"
               />
 
               <div className="p-4">

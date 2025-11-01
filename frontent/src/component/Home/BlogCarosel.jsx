@@ -47,7 +47,7 @@ const BlogCarosel = () => {
   };
 
   const renderSlide = (blog) => {
-    const imageUrl = blog.image ? `${API_URL}${blog.image}` : "/blogs/b2.jpg";
+    const imageUrl = blog.image ? blog.image : "/blogs/b2.jpg";
     return (
       <div
         key={blog.id}
@@ -58,7 +58,7 @@ const BlogCarosel = () => {
           <img
             src={imageUrl}
             alt={blog.title}
-            className="w-full h-[300px] md:h-[350px] object-cover rounded-lg"
+            className="w-full h-[300px] md:h-[450px]  object-contain rounded-lg"
           />
           <div className="absolute bottom-0 left-0 w-full bg-gray-200 p-4 flex flex-col justify-between rounded-b-lg">
             <span className="text-black text-xl md:text-2xl font-bold">
@@ -117,11 +117,7 @@ const BlogCarosel = () => {
                 <ImCross size={10} className="text-red-500" />
               </button>
               <img
-                src={
-                  selectedBlog.image
-                    ? `${API_URL}${selectedBlog.image}`
-                    : "/blogs/b2.jpg"
-                }
+                src={selectedBlog.image ? selectedBlog.image : "/blogs/b2.jpg"}
                 alt={selectedBlog.title}
                 className="w-full h-[400px]  object-contain rounded-md mb-4"
               />

@@ -36,7 +36,7 @@ const BlogEdit = () => {
         // quillRef.current?.setContents(delta);
         setContent(delta);
         if (res.data.image) {
-          setPreview(`${API_URL}${res.data.image}`);
+          setPreview(res.data.image);
         }
 
         console.log(res.data);

@@ -2,6 +2,9 @@
 
 const Blog = require("../models/Blog");
 const User = require("../models/User");
+const cloudinary = require("cloudinary").v2; // Cloudinary-ஐ Delete செய்ய தேவை
+
+// ✅ Add new blog (Cloudinary integration)
 
 exports.addBlog = async (req, res) => {
   //console.log(req.file);
@@ -16,9 +19,12 @@ exports.addBlog = async (req, res) => {
       return res.status(403).json({ message: "Only admin can create blogs" });
     }
 
-    let imagepath = null;
+    let imageDetails = {};
+
     if (req.file) {
-      imagepath = req.file.path;
+      // Multer-Cloudinary Storage-லிருந்து விவரங்களைப் பெறுகிறது
+      imageDetails.image = req.file.path; // Cloudinary URL
+      imageDetails.publicId = req.file.filename; // Cloudinary Public ID
     }
 
     const blog = await Blog.create({
@@ -26,11 +32,15 @@ exports.addBlog = async (req, res) => {
       content,
       contentHtml, // clean HTML for display
       authorId: userId,
-      image: req.file ? `/uploads/${req.file.filename}` : null,
+      image: imageDetails.image || null,
+      // Public ID-ஐ database-ல் சேமிக்கவும்
+      publicId: imageDetails.publicId || null,
     });
 
     res.status(201).json({ message: "Blog created successfully", blog });
   } catch (error) {
+    // ஏதேனும் பிழை ஏற்பட்டால், Cloudinary-ல் சேமிக்கப்பட்ட படத்தையும் நீக்க வேண்டும் (விரும்பினால்)
+
     res.status(500).json({ message: error.message });
   }
 };
@@ -52,7 +62,14 @@ exports.editBlog = async (req, res) => {
     }
 
     if (req.file) {
-      blog.image = `/uploads/${req.file.filename}`; // ✅ consistent clean relative path
+      // 1. பழைய படத்தை Cloudinary-ல் இருந்து நீக்கவும்
+      if (blog.publicId) {
+        await cloudinary.uploader.destroy(blog.publicId);
+      }
+
+      // 2. புதிய பட விவரங்களைச் சேர்க்கவும்
+      blog.image = req.file.path; // Cloudinary URL
+      blog.publicId = req.file.filename; // Cloudinary Public ID
     }
 
     blog.title = title || blog.title;
@@ -82,6 +99,12 @@ exports.deleteBlog = async (req, res) => {
         .json({ message: "Not authorized to delete this blog" });
     }
 
+    // 1. Cloudinary-லிருந்து படத்தை நீக்கவும்
+    if (blog.publicId) {
+      await cloudinary.uploader.destroy(blog.publicId);
+    }
+
+    // 2. Database-லிருந்து Blog-ஐ நீக்கவும்
     await Blog.destroy({ where: { id } });
     res.json({ message: "Blog deleted successfully" });
   } catch (error) {

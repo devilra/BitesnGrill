@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { login, loading, user } = useAuth(); // ✅ global loading
@@ -8,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
   const [isSubmit, setIsSubmit] = useState(false);
+  const navigate = useNavigate();
 
   // console.log(loading);
   // console.log(user);
@@ -18,6 +20,7 @@ const Login = () => {
     setIsSubmit(true);
     try {
       await login(email, password);
+      navigate("/dashboard");
       setMessage({ type: "success", text: "Login Successful ✅" });
       setTimeout(() => {
         setMessage(null);

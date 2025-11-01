@@ -30,6 +30,7 @@ export const BlogProvider = ({ children }) => {
           "Content-Type": "multipart/form-data",
         },
       });
+      console.log(res.data);
       setBlogs((prev) => [res.data.blog, ...prev]); // prepend new blog
       return res.data;
     } catch (error) {

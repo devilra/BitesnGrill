@@ -19,6 +19,18 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
+
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("✅ MySQL connected successfully!");
+    await sequelize.sync({ alter: true });
+    console.log("✅ Tables synced successfully!");
+  } catch (error) {
+    console.error("❌ DB Errors:", error);
+  }
+})();
+
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
@@ -30,12 +42,16 @@ app.use("/api", contactRoute);
 
 const PORT = process.env.PORT;
 
-sequelize
-  .sync({ alter: true })
-  .then(() => {
-    console.log("Tables synced!");
-    app.listen(PORT, () => {
-      console.log(`Server Running ${PORT} `);
-    });
-  })
-  .catch((err) => console.log(err.message));
+// sequelize
+//   .sync({ alter: true })
+//   .then(() => {
+//     console.log("Tables synced!");
+//     app.listen(PORT, () => {
+//       console.log(`Server Running ${PORT} `);
+//     });
+//   })
+//   .catch((err) => console.log(err.message));
+
+app.listen(PORT, () => {
+  console.log(`Server Connected ${PORT}`);
+});

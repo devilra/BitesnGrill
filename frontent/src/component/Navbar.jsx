@@ -52,7 +52,7 @@ const Navbar = () => {
         <RouterLink
           to={item.path}
           onClick={() => setIsOpen(false)}
-          className={`duration-300 group-hover:text-white ${
+          className={`duration-300  group-hover:text-white ${
             isActive ? "md:text-white text-neutral-700  " : ""
           } `}
         >
@@ -108,7 +108,7 @@ const Navbar = () => {
         {menuItems.map((item, idx) => (
           <motion.li
             key={idx}
-            className="relative font-bold cursor-pointer group"
+            className="relative font-bold cursor-pointer text-[13.5px] group"
           >
             {renderLink(item)}
 

@@ -1,6 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import { Button } from "@mui/material";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const { loading, signup } = useAuth();
@@ -15,6 +16,7 @@ const Signup = () => {
     try {
       await signup({ userName, email, password, isAdmin: true });
       setMessage({ type: "success", text: "Signup Successful ✅" });
+      toast.success("Signup Successful");
       setTimeout(() => {
         setMessage(null);
       }, 3000);
@@ -26,6 +28,7 @@ const Signup = () => {
         type: "error",
         text: "Something went wrong ❌",
       });
+      toast.error("Something went wrong");
     }
   };
 
@@ -51,6 +54,7 @@ const Signup = () => {
             onChange={(e) => setUserName(e.target.value)}
             className="w-full border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
+            autoComplete="off"
           />
         </div>
         <div>
@@ -61,6 +65,7 @@ const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
+            autoComplete="off"
           />
         </div>
         <div>
@@ -71,6 +76,7 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full border border-gray-300 px-3 mb-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
+            autoComplete="off"
           />
         </div>
         <Button

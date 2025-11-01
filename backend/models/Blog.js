@@ -19,13 +19,17 @@ const Blog = sequelize.define("Blog", {
     type: DataTypes.STRING, // Image file path or URL
     allowNull: true, // optional
   },
+  publicId: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   authorId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: User,
-      key: "id",
-    },
+    // references: {
+    //   model: User,
+    //   key: "id",
+    // },
   },
 });
 
