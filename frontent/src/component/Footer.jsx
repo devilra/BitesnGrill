@@ -113,7 +113,10 @@ export default function Footer() {
       <div className="text-center text-sm mt-10 border-t border-black/20 pt-4">
         © Copyright <span className="font-bold">BitesnGrill.</span> All Rights
         Reserved <br />
-        Designed by <span className="font-semibold">Amigowebster</span>
+        Designed by{" "}
+        <a href="https://amigowebster.com/" className="font-semibold">
+          Amigowebster
+        </a>
       </div>
 
       {/* Scroll To Top Button */}
